@@ -1689,7 +1689,7 @@ impl Index {
     for inscription_id in inscriptions {
       match self.get_inscription_entry(inscription_id) {
         Ok(Some(entry)) => {
-          let content = String::from_utf8(self.get_inscription_by_id(inscription_id)?.unwrap().into_body().unwrap()).unwrap_or_else(|_| String::new());
+          let content = String::from_utf8(self.get_inscription_by_id(inscription_id)?.unwrap().into_body().unwrap_or_else(Vec::new)).unwrap_or_else(|_| String::new());
           let entry_with_content = ExtendedInscriptionEntry{
             entry,
             content,
